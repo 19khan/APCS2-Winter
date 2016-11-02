@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;newArray&apos; in &apos;arrays_materials.ArraysLab3.append(...)&apos; to &apos;appendArray&apos;&#x0D;&#x0A;- Original project: &apos;arrays_lab_3_basic_skills_1dim&apos;&#x0D;&#x0A;- Original element: &apos;arrays_materials.ArraysLab3.append(int[], int).newArray&apos;&#x0D;&#x0A;- Renamed element: &apos;newArray&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;newArray&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;arrays_materials{ArraysLab3.java[ArraysLab3~append~\[I~I@newArray!1114!1155!1121!1128!\[I!0!false" name="appendArray" references="true" stamp="1478106225810" version="1.0"/>
+</session>
