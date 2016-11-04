@@ -53,16 +53,16 @@ public class ArraysLab3
 		assert (arr.length >= 2);
 		
 		int [] removeArray = new int [arr.length-1];
-		for (int i = 0; i < arr.length; i++){
-			if (i == idx){
-				i++;
+		for (int i = 0; i < removeArray.length; i++){
+			for (int j = 0; j < arr.length; j++){
+				if (j == idx){
+					j ++;
+				}else {
+					removeArray [i] = arr[j];
+				}
 			}
-			else{
-				removeArray[i] = arr[i];
-			}
-		
 		}
-		return removeArray;
+		return removeArray;	
 	}
 	
 	/*
