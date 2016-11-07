@@ -1,3 +1,4 @@
+//APCS 2 Kevin Han
 package arrays_materials;
 
 import java.util.Arrays;
@@ -10,17 +11,17 @@ public class ArraysLab3
 	 * in which every element is the sum of the elements at that index for the arrays arr1 and arr2. 
 	 * You can assume arrays arr1 and arr2 have at least one element each and are the same length.
 	 */
-	public static int[] sum(int[] arr1, int[] arr2){
-		
+	public static int[] sum(int[] arr1, int[] arr2)
+	{
 		assert (arr1.length > 0);
 		assert (arr2.length > 0);
 		assert (arr1.length == arr2.length);
 		
-		int [] sumArray = new int [arr1.length];  //create new array with same length as arr1 and arr2.
-		for (int i = 0; i < arr1.length; i++){  //for loop that will set all elements of the new array.
-			sumArray [i] = arr1 [i] + arr2 [i];  //adds elements of same position of arr1 and arr2 and set it to new array at same position. 
+		int [] sumArray = new int [arr1.length]; //create new array with same length.
+		for (int i= 0; i < arr1.length; i++){ //for loop that will set all elements of the new array.
+			sumArray [i] = arr1 [i] + arr2 [i]; //adds elements of same position of arr1 and arr2
 		}
-		return sumArray; //return the new array.
+		return sumArray; //return new array.
 	}
 	
 	/*
@@ -29,17 +30,16 @@ public class ArraysLab3
 	 * that consists of the elements of arr with num appended to the end.  
 	 * You can assume array arr has at least one element.
 	 */
-	public static int[] append(int[] arr, int num){
-		
+	public static int[] append(int[] arr, int num)
+	{
 		assert (arr.length > 0);
 		
-		int [] appendArray = new int [arr.length +1];  //create new array with arr.lenght + 1.
-		for (int i = 0; i < arr.length; i++){  //for loop that sets all values of arr into the new array.
+		int [] appendArray = new int [arr.length+1]; //create new array with extra element.
+		for (int i = 0; i < arr.length; i++){ //for loop that sets all values of arr into the new array.
 			appendArray [i] = arr [i];
 		}
-		appendArray[appendArray.length-1] = num;  //append the integer given to the last position of new array.
+		appendArray [appendArray.length-1] = num; //append the given integer to last position.
 		return appendArray; //return the new array.
-		
 	}
 	
 	/*
@@ -48,21 +48,25 @@ public class ArraysLab3
 	 * except for the element at index idx (thus, the returned array has a length of arr.length – 1).  
 	 * You can assume arr has at least two elements.
 	 */
-	public static int[] remove(int[] arr, int idx){
-		
+	public static int[] remove(int[] arr, int idx)
+	{
 		assert (arr.length >= 2);
 		
-		int [] removeArray = new int [arr.length-1];
-		for (int i = 0; i < removeArray.length; i++){
-			for (int j = 0; j < arr.length; j++){
-				if (j == idx){
-					j ++;
-				}else {
-					removeArray [i] = arr[j];
-				}
+		int [] removeArray = new int [arr.length-1]; //create new array with one less element.
+		
+		int loopVar = 0;
+		for (int i = 0; i <removeArray.length; i++){
+			if (i == idx){
+				removeArray[i] = arr [i+1];
+				loopVar ++;
+			}else if (loopVar > 0){
+				removeArray [i] = arr [i+1];
+			}else{
+				removeArray[i] = arr[i];
 			}
 		}
-		return removeArray;	
+		return removeArray;
+		
 	}
 	
 	/*
@@ -74,14 +78,13 @@ public class ArraysLab3
 	{
 		assert (arr.length > 0);
 		
-		int arraySum = 0;  //variable outside the array that will signify the sum of all even elements.
-		for (int i: arr){  //use for-each loop to check if any element of the array is even.
-			if (i%2 == 0){       //if the element is even,
-				arraySum += i;   //add to arraySum.
+		int arraySum = 0; //variable outside the array that represents sum of all even numbers.
+		for (int i: arr){ //use for-each loop to check if any element of the array is even.
+			if (i%2 == 0){ //if the element is even,
+				arraySum += i; //add to arraySum.
 			}
 		}
-		return arraySum;  //return the sum of all even elements.
-		
+		return arraySum;
 	}
 	
 	/*
@@ -91,15 +94,15 @@ public class ArraysLab3
 	 * (element 0 goes to element 1, element 1 goes to element 2, …, element n-1 goes to element 0).  
 	 * You can assume arr has at least one element.
 	 */
-	public static void rotateRight(int[] arr){
-		
+	public static void rotateRight(int[] arr)
+	{
 		assert (arr.length > 0);
 		
-		int last = arr [arr.length-1];
-		for (int i = arr.length-1; i >= 1; i--){
-			arr[i] = arr [i-1];
+		int last = arr [arr.length-1]; //set last element as a separate variable.
+		for (int i = arr.length-1; i >= 1; i--){ //traverse across array from right to left.
+			arr[i] = arr[i-1]; //move all elements except the last to its new position.
 		}
-		arr[0] = last;
+		arr [0] = last; //set last element as the first element.
 	}
 
 	/*
@@ -125,8 +128,7 @@ public class ArraysLab3
 				a1
 	 */
 	
-	public static void main(String[] args){
-		
+	public static void main(String[] args) {
 		int [] a1 = {5, 10, 15, 20, 25, 30, 35, 40};
 		int [] a2 = {7, 14, 21, 28, 35, 42, 49, 56};
 		
@@ -144,6 +146,5 @@ public class ArraysLab3
 		System.out.println(Arrays.toString(removeArr));
 		System.out.println(sumOfEvens);
 		System.out.println(Arrays.toString(a1));
-		
 	}
 }
