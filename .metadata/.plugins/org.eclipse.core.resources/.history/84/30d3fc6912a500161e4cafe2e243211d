@@ -1,5 +1,5 @@
-package fracCalc;
 import java.util.*;
+package fracCalc;
 
 public class FracCalc {
 

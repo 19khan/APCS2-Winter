@@ -1,5 +1,5 @@
-package fracCalc;
 import java.util.*;
+package fracCalc;
 
 public class FracCalc {
 
@@ -43,7 +43,19 @@ public class FracCalc {
         int numerator2 = Integer.parseInt(frac2Split[0]);
         int denominator2 = Integer.parseInt(frac2Split[1]);
         
-        return equation2;
+        if (operant == "+"){
+        	        	
+        }else if (operant == "-"){
+        	
+        }else if (operant == "*"){
+        	
+        }else if (operant == "/"){
+        	
+        }else{
+        	
+        }
+        
+        return "";
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
