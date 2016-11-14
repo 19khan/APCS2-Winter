@@ -17,11 +17,8 @@ public class FracCalc {
     		System.out.println("Give equation");
     		inputEquation = userInput.nextLine();
     		System.out.println(produceAnswer(inputEquation));
-    		if (inputEquation.equals("quit")){
-    			break;
-    		}
     	}
-
+    	System.out.println("asdf");
     	// TODO: Read the input from the user and call produceAnswer with an equation
     }
     

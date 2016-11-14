@@ -6,9 +6,8 @@ public class FracCalc {
     public static void main(String[] args){
     	
     	Scanner userInput = new Scanner (System.in);
-		System.out.println("Give equation");
     	String inputEquation = userInput.nextLine();
-
+		System.out.println("Give equation");
     	
     	if (!inputEquation.equals("quit")){
     		System.out.println(produceAnswer(inputEquation));
@@ -17,11 +16,8 @@ public class FracCalc {
     		System.out.println("Give equation");
     		inputEquation = userInput.nextLine();
     		System.out.println(produceAnswer(inputEquation));
-    		if (inputEquation.equals("quit")){
-    			break;
-    		}
     	}
-
+    	System.out.println(produceAnswer (inputEquation));
     	// TODO: Read the input from the user and call produceAnswer with an equation
     }
     
