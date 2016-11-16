@@ -16,10 +16,10 @@ public class FracCalc {
     	while (!inputEquation.equals("quit")){
     		System.out.println("Give equation");
     		inputEquation = userInput.nextLine();
-    		System.out.println(produceAnswer(inputEquation));
     		if (inputEquation.equals("quit")){
     			break;
     		}
+    		System.out.println(produceAnswer(inputEquation));
     	}
 
     	// TODO: Read the input from the user and call produceAnswer with an equation
@@ -35,11 +35,13 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String equation){ 
         // TODO: Implement this function to produce the solution to the input
-        String [] inputSplit = equation.split (" ");
+        //splitting equation by " ".
+    	String [] inputSplit = equation.split (" ");
         String equation1 = inputSplit[0];
         String operant = inputSplit[1];
         String equation2 = inputSplit[2];    	
         
+        //isolating whole number from equation.
         String wholeNum1 = "";
         String frac1 = "";
         String [] equation1Split = equation1.split("_");
@@ -70,6 +72,7 @@ public class FracCalc {
         	frac2 = equation2Split[1];
         }
         
+        //splitting each fraction by "/".
         String numerator1 = "";
         String denominator1 = "";
         String [] frac1Split = frac1.split("/");
@@ -91,6 +94,7 @@ public class FracCalc {
         	numerator2 = frac2Split[0];
         	denominator2 = frac2Split[1];
         }
+        
         
         if (operant == "+"){
         

@@ -2,16 +2,27 @@ package fracCalc;
 import java.util.*;
 
 public class FracCalc {
-
+	
     public static void main(String[] args){
     	
     	Scanner userInput = new Scanner (System.in);
-    	System.out.println("give equation.");
+		System.out.println("Give equation");
     	String inputEquation = userInput.nextLine();
-    	
-    	System.out.println(produceAnswer (inputEquation));
-    	// TODO: Read the input from the user and call produceAnswer with an equation
 
+    	
+    	if (!inputEquation.equals("quit")){
+    		System.out.println(produceAnswer(inputEquation));
+    	}
+    	while (!inputEquation.equals("quit")){
+    		System.out.println("Give equation");
+    		inputEquation = userInput.nextLine();
+    		System.out.println(produceAnswer(inputEquation));
+    		if (inputEquation.equals("quit")){
+    			break;
+    		}
+    	}
+
+    	// TODO: Read the input from the user and call produceAnswer with an equation
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -37,6 +48,7 @@ public class FracCalc {
         	wholeNum1 = "0";
         	frac1 = equation1Split[0];
         }else if (equation1Split.length <=1){
+        	wholeNum1 = equation1Split[0];
         	frac1 = equation1Split[0];
         }else{
         	wholeNum1 = (equation1Split[0]);
@@ -49,9 +61,10 @@ public class FracCalc {
         if (equation2Split.length <=1
         		&& Arrays.toString(equation2Split).indexOf("/") >0){
         	wholeNum2 = "0";
-        	frac1 = equation1Split[0];
+        	frac2 = equation2Split[0];
         }else if (equation2Split.length <=1){
-        	frac1 = equation1Split[0];
+        	wholeNum2 = equation2Split[0];
+        	frac2 = equation2Split[0];
         }else{
         	wholeNum2 = (equation2Split[0]);
         	frac2 = equation2Split[1];
@@ -79,8 +92,18 @@ public class FracCalc {
         	denominator2 = frac2Split[1];
         }
         
+        if (operant == "+"){
+        
+        }else if (operant == "-"){
+        	
+        }else if (operant == "*"){
+        	
+        }else if (operant == "/"){
+        	
+        }
         return ("whole:" +wholeNum2+ " numerator:" +numerator2+ " denominator:" +denominator2);
     }
+    
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
