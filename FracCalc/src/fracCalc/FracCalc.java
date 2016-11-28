@@ -108,6 +108,24 @@ public class FracCalc {
         return ("whole:" +wholeNum2+ " numerator:" +numerator2+ " denominator:" +denominator2);
     }
     
+    public void parseInput (String userInput){
+    	String [] inputSplit = userInput.split(" ");
+    	String operand1 = inputSplit[0];
+    	String operand2 = inputSplit[2];
+    	String operator = inputSplit[1];
+    }
+    
+    public void parseOperands (String operand){
+    	
+    }
+    
+    
+    public int addFrac (int , String operand2){
+    	
+    }
+    
+    public int muitiplyFrac ()
+    
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
