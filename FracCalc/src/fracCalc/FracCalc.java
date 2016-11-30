@@ -6,20 +6,20 @@ public class FracCalc {
     public static void main(String[] args){
     	
     	Scanner userInput = new Scanner (System.in);
-		System.out.println("Give equation");
-    	String inputEquation = userInput.nextLine();
+		System.out.println("Give expression");
+    	String inputExpression = userInput.nextLine();
 
     	
-    	if (!inputEquation.equals("quit")){
-    		System.out.println(produceAnswer(inputEquation));
+    	if (!inputExpression.equals("quit")){
+    		System.out.println(produceAnswer(inputExpression));
     	}
-    	while (!inputEquation.equals("quit")){
-    		System.out.println("Give equation");
-    		inputEquation = userInput.nextLine();
-    		if (inputEquation.equals("quit")){
+    	while (!inputExpression.equals("quit")){
+    		System.out.println("Give expression");
+    		inputExpression = userInput.nextLine();
+    		if (inputExpression.equals("quit")){
     			break;
     		}
-    		System.out.println(produceAnswer(inputEquation));
+    		System.out.println(produceAnswer(inputExpression));
     	}
 
     	// TODO: Read the input from the user and call produceAnswer with an equation
@@ -33,98 +33,117 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String equation){ 
+    public static String produceAnswer(String expression){ 
         // TODO: Implement this function to produce the solution to the input
         //splitting equation by " ".
-    	String [] inputSplit = equation.split (" ");
-        String equation1 = inputSplit[0];
-        String operant = inputSplit[1];
-        String equation2 = inputSplit[2];    	
-        
-        //isolating whole number from equation.
-        int wholeNum1;
-        String frac1 = "";
-        String [] equation1Split = equation1.split("_");
-        if (equation1Split.length <=1
-        		&& Arrays.toString(equation1Split).indexOf("/") >0){
-        	wholeNum1 = 0;
-        	frac1 = equation1Split[0];
-        }else if (equation1Split.length <=1){
-        	wholeNum1 = Integer.parseInt(equation1Split[0]);
-        	frac1 = equation1Split[0];
-        }else{
-        	wholeNum1 = Integer.parseInt(equation1Split[0]);
-        	frac1 = equation1Split[1];
-        }
-        
-        String [] equation2Split = equation2.split("_");
-        int wholeNum2;
-        String frac2 = "";
-        if (equation2Split.length <=1
-        		&& Arrays.toString(equation2Split).indexOf("/") >0){
-        	wholeNum2 = 0;
-        	frac2 = equation2Split[0];
-        }else if (equation2Split.length <=1){
-        	wholeNum2 = Integer.parseInt(equation2Split[0]);
-        	frac2 = equation2Split[0];
-        }else{
-        	wholeNum2 = Integer.parseInt(equation2Split[0]);
-        	frac2 = equation2Split[1];
-        }
-        
-        //splitting each fraction by "/".
-        String numerator1 = "";
-        String denominator1 = "";
-        String [] frac1Split = frac1.split("/");
-        if (frac1Split.length <=1){
-        	numerator1 = "0";
-        	denominator1 = "1";
-        }else{
-        	numerator1 = frac1Split[0];
-        	denominator1 = frac1Split[1];
-        }
-        
-        int numerator2;
-        int denominator2;
-        String [] frac2Split = frac2.split("/");
-        if (frac2Split.length <=1){
-        	numerator2 = 0;
-        	denominator2 = 1;
-        }else{
-        	numerator2 = Integer.parseInt(frac2Split[0]);
-        	denominator2 = Integer.parseInt(frac2Split[1]);
-        }
-        
-        
-        if (operant == "+"){
-        
-        }else if (operant == "-"){
-        	
-        }else if (operant == "*"){
-        	
-        }else if (operant == "/"){
-        	
-        }
-        return ("whole:" +wholeNum2+ " numerator:" +numerator2+ " denominator:" +denominator2);
+    	
+    	String [] operandsAndOperator = new String [3];
+    	parseInput (expression, operandsAndOperator);
+    	
+    	String frac1 = operandsAndOperator[0];
+    	String operator = operandsAndOperator[1];
+    	String frac2 = operandsAndOperator[2];
+    	
+    	int [] frac1Elements = new int [2];
+    	parseOperands(frac1, frac1Elements);
+    	
+    	int [] frac2Elements = new int [2];
+    	parseOperands(frac2, frac2Elements);
+    	
+    	int [] fracAnswer = new int [2];
+    	if (operator.equals("+")
+    		|| operator.equals("-")){
+    		addFrac (frac1Elements, frac2Elements, operator, fracAnswer);
+    		
+    	}else if (operator.equals("*")){
+    		multiplyFrac (frac1Elements, frac2Elements, fracAnswer);
+    	
+    	}else if (operator.equals("/")){
+    		divideFrac (frac1Elements, frac2Elements, fracAnswer);
+    	}
+    	
+    	return fracAnswer[0] + "/" + fracAnswer[1];
     }
     
-    public void parseInput (String userInput){
+    public static void parseInput (String userInput, String [] operands){
     	String [] inputSplit = userInput.split(" ");
-    	String operand1 = inputSplit[0];
-    	String operand2 = inputSplit[2];
-    	String operator = inputSplit[1];
+    	operands = inputSplit;
     }
     
-    public void parseOperands (String operand){
+    public static void parseOperands (String operand, int [] elements){
+    	String fraction = "";
+    	int whole;
+    	int numerator;
+    	int denominator;
+    	String [] operandSplit = operand.split("_");
+    	if (operandSplit.length < 2){
+    		whole = 0;
+    	}else{
+    		whole = Integer.parseInt(operandSplit[0]);
+    		operandSplit[1] = fraction;
+    	}
     	
+    	String [] fractionSplit = fraction.split("/");
+        if (fractionSplit.length <=1){
+        	numerator = 0;
+        	denominator = 1;
+        }else{
+        	numerator = Integer.parseInt(fractionSplit[0]);
+        	denominator = Integer.parseInt(fractionSplit[1]);
+        }
+        toImproperFrac (whole, numerator, denominator, elements);
     }
     
-    
-    public int addFrac (int , String operand2){
+    public static void addFrac (int [] frac1, int [] frac2, String operator, int [] answer){
+    	int newFrac1Numerator;
+    	int newDenominator;
+    	int newFrac2Numerator;
     	
+    	if (operator.equals("-")){
+    		frac2[0] = frac2[0]*(-1);
+    	}
+    	
+    	if (frac1[1] == frac2[1]){
+    		answer[0] = frac1[0] + frac2[0];
+    		answer[1] = frac1[1];
+    	}else{
+    		newFrac1Numerator = frac1[0] * frac2[1];
+    		newDenominator = frac1[1] * frac2[1];
+    		
+    		newFrac2Numerator = frac2[0] * frac1[1];
+    		
+    		answer[0] = newFrac1Numerator + newFrac2Numerator;
+    		answer[1] = newDenominator;
+    	}
     }
     
-    public int muitiplyFrac ()
+    public static void multiplyFrac (int [] frac1, int [] frac2, int [] answer){
+    	int newNumerator = frac1[0] * frac2[0];
+    	int newDenominator = frac1[1] * frac2[1];
+    	
+    	answer[0] = newNumerator;
+    	answer[1] = newDenominator;
+    }
+    
+    public static void divideFrac (int [] frac1, int [] frac2, int [] answer){
+    	int newNumerator = frac1[0] * frac2[1];
+    	int newDenominator = frac1[1] * frac2[0];
+    	
+    	answer[0] = newNumerator;
+    	answer[1] = newDenominator;
+    }
+    
+    public static void toImproperFrac(int whole, int numerator, int denominator, int [] elementsTemp){
+    	if (whole == 0){
+    		elementsTemp [1] = numerator;
+    		elementsTemp [2] = denominator;
+    	}else {
+    		int newNumerator = whole*denominator + numerator;
+    		elementsTemp [1] = newNumerator;
+    		elementsTemp [2] = denominator;
+    	}
+    }
+    
     
 
     // TODO: Fill in the space below with any helper methods that you think you will need
