@@ -1,5 +1,3 @@
-//APCS2 Kevin Han
-
 package fracCalc;
 import java.util.*;
 
@@ -47,11 +45,19 @@ public class FracCalc {
     	String operator = operandsAndOperator[1];
     	String frac2 = operandsAndOperator[2];
     	
+    	System.out.println (frac1);
+    	System.out.println (frac2);
+    	System.out.println (operator);
+    	
     	int [] frac1Elements = new int [2];
     	parseOperands(frac1, frac1Elements);
     	
+    	System.out.println (Arrays.toString(frac1Elements));
+    	
     	int [] frac2Elements = new int [2];
     	parseOperands(frac2, frac2Elements);
+    	
+    	System.out.println (Arrays.toString(frac1Elements));
     	
     	int [] fracAnswer = new int [2];
     	if (operator.equals("+")
