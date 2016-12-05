@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;fracCalc.FracCalc.simplify(...)&apos; to &apos;toMixedNum&apos;&#x0D;&#x0A;- Original project: &apos;FracCalc&apos;&#x0D;&#x0A;- Original element: &apos;fracCalc.FracCalc.simplify(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;fracCalc.FracCalc.toMixedNum(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;simplify&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;fracCalc{FracCalc.java[FracCalc~simplify~\[I~\[I" name="toMixedNum" references="true" stamp="1480699148504" version="1.0"/>
+</session>

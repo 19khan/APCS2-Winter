@@ -186,31 +186,25 @@ public class FracCalc {
     	int newNumerator = numerator%denominator;
     	whole = numerator/denominator;
     	
-    	
-    	int gcf;
-    	if (numerator<0){
-    		gcf = gcf (numerator*-1, denominator);
-    	}else{
-    		gcf = gcf (numerator, denominator);
-    	}
+    	int gcf = gcf (numerator, denominator);
     	int finalNumerator = newNumerator/gcf;
+    	
+    	System.out.println(numerator);
+    	System.out.println(finalNumerator);
+    	
     	int finalDenominator = denominator/gcf;
     	
-    	if (whole > 0
-    			&& finalNumerator>0){
-    		return (whole+"_"+finalNumerator+"/"+finalDenominator);
-    	}else if (finalNumerator == 0
-    			&& whole > 0){
-    		return (""+whole);
-    	}else{
-    		return (finalNumerator+"/"+finalDenominator);
-    	}
+    	System.out.println(denominator);
+    	System.out.println(finalDenominator);
+    	System.out.println(whole);
+    	
+    	return (whole+"_"+finalNumerator+"/"+finalDenominator);
     } 
     
     public static int gcf (int numerator, int denominator){
     	int gcf = 1;
     	int smallNum = (Math.min(numerator, denominator));
-    	for (int i = 2; i <= smallNum; i++){
+    	for (int i = 2; i < smallNum; i++){
     		if (isDivisibleBy (numerator, i)==true
     				&& isDivisibleBy (denominator, i)){
     			gcf = i;

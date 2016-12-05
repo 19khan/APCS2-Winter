@@ -157,10 +157,6 @@ public class FracCalc {
     			&& fraction.indexOf("_") > 0){
     		elementsTemp [0] = numerator;
     		elementsTemp [1] = denominator;
-    	}else if (whole <0
-    			&& fraction.indexOf("_") > 0){
-    		elementsTemp [0] = whole*denominator + numerator*-1;
-    		elementsTemp [1] = denominator;    	
     	}else {
     		int newNumerator = whole*denominator + numerator;
     		elementsTemp [0] = newNumerator;
@@ -169,48 +165,28 @@ public class FracCalc {
     }
     
     public static String finalAnswer (int [] improperAnswer){
-    	int whole;
     	int denominator = improperAnswer[1];
     	int numerator = improperAnswer[0];
     	
-    	if (denominator<0
-    			&& numerator<0){
-    		denominator = denominator *-1;
-    		numerator = numerator * -1;
-    	}else if (denominator<0
-    			&& numerator >0){
-    		denominator = denominator * -1;
-    		numerator = numerator *-1;
-    	}
-
+    	return (numerator+"/"+denominator);
+    	
+   /* 	numerator = improperAnswer[0];
+    	denominator = improperAnswer[1];
+    	
     	int newNumerator = numerator%denominator;
     	whole = numerator/denominator;
     	
-    	
-    	int gcf;
-    	if (numerator<0){
-    		gcf = gcf (numerator*-1, denominator);
-    	}else{
-    		gcf = gcf (numerator, denominator);
-    	}
+    	int gcf = gcf (numerator, denominator);
     	int finalNumerator = newNumerator/gcf;
     	int finalDenominator = denominator/gcf;
     	
-    	if (whole > 0
-    			&& finalNumerator>0){
-    		return (whole+"_"+finalNumerator+"/"+finalDenominator);
-    	}else if (finalNumerator == 0
-    			&& whole > 0){
-    		return (""+whole);
-    	}else{
-    		return (finalNumerator+"/"+finalDenominator);
-    	}
+    	return (whole+"_"+finalNumerator+"/"+finalDenominator);*/
     } 
     
     public static int gcf (int numerator, int denominator){
     	int gcf = 1;
     	int smallNum = (Math.min(numerator, denominator));
-    	for (int i = 2; i <= smallNum; i++){
+    	for (int i = 2; i < smallNum; i++){
     		if (isDivisibleBy (numerator, i)==true
     				&& isDivisibleBy (denominator, i)){
     			gcf = i;

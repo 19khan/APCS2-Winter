@@ -196,6 +196,7 @@ public class FracCalc {
     	int finalNumerator = newNumerator/gcf;
     	int finalDenominator = denominator/gcf;
     	
+    	System.out.println(finalNumerator);
     	if (whole > 0
     			&& finalNumerator>0){
     		return (whole+"_"+finalNumerator+"/"+finalDenominator);

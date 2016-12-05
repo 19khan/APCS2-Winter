@@ -196,12 +196,8 @@ public class FracCalc {
     	int finalNumerator = newNumerator/gcf;
     	int finalDenominator = denominator/gcf;
     	
-    	if (whole > 0
-    			&& finalNumerator>0){
+    	if (whole > 0){
     		return (whole+"_"+finalNumerator+"/"+finalDenominator);
-    	}else if (finalNumerator == 0
-    			&& whole > 0){
-    		return (""+whole);
     	}else{
     		return (finalNumerator+"/"+finalDenominator);
     	}
