@@ -25,8 +25,6 @@ public class FracCalc {
     		}
     		System.out.println(produceAnswer(inputExpression));
     	}
-
-    	// TODO: Read the input from the user and call produceAnswer with an equation
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -38,8 +36,6 @@ public class FracCalc {
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String expression){ 
-        // TODO: Implement this function to produce the solution to the input
-        //splitting equation by " ".
     	
     	String [] operandsAndOperator = new String [3];
     	parseInput (expression, operandsAndOperator);		//parse the input expression
@@ -153,7 +149,7 @@ public class FracCalc {
     			&& fraction.indexOf("_") > 0){
     		elementsTemp [0] = numerator;
     		elementsTemp [1] = denominator;
-    	}else if (whole <0
+    	}else if (whole <0		//when the whole number is negative
     			&& fraction.indexOf("_") > 0){
     		elementsTemp [0] = whole*denominator + numerator*-1;		//new numerator will be the whole * denominator + numerator
     		elementsTemp [1] = denominator;    	
@@ -211,28 +207,16 @@ public class FracCalc {
     	}
     } 
     
-    //methods below are all used to find the gcf of the two denominators, which is then used to simplify the fraction.
-    public static int gcf (int numerator, int denominator){
+    public static int gcf (int numerator, int denominator){		//calculate gcf of numerator and denominator in order to simplify fraction.
     	int gcf = 1;
     	int smallNum = (Math.min(numerator, denominator));
     	for (int i = 2; i <= smallNum; i++){
-    		if (isDivisibleBy (numerator, i)==true
-    				&& isDivisibleBy (denominator, i)){
-    			gcf = i;
+    		if (numerator%i == 0				//if both numerator and denominator are divisible by the int i,
+    				&& denominator % i == 0){
+    			gcf = i;		//int i will be the new gcf.
     		}
     	}
     	return gcf;
     }
-    
-    public static boolean isDivisibleBy (int a, int b){
-    	if (a%b == 0){
-    		return true;
-    	}else {
-    		return false;
-    	}
-    }
-    
-
-    // TODO: Fill in the space below with any helper methods that you think you will need
     
 }
